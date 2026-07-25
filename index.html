@@ -138,6 +138,34 @@
         font-size: 1.3em;
       }
     }
+
+    /* Photo Gallery */
+    .photo-gallery {
+      display: flex;
+      gap: 16px;
+      overflow: hidden;
+      padding: 16px 4px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+
+    .photo-gallery img {
+      flex: 0 0 auto;
+      max-height: 400px;
+      max-width: 100%;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .photo-gallery img.active {
+      opacity: 1;
+    }
   </style>
 
 </head>
@@ -169,6 +197,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.html#sponsors">Sponsors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#gallery">Photos</a>
         </li>
       </ul>
     </div>
@@ -464,7 +495,8 @@
         <tr>
           <td>
             <b>SPARC: Reliable Spatial Annotations from Robot Demonstrations at Scale</b><br>
-            Nils Blank, Paul Mattes, Maximilian Xiling Li, Jakub Suliga, Thomas Roth, Moritz Reuss, Pankhuri Vanjani, Rudolf Lioutikov
+            Nils Blank, Paul Mattes, Maximilian Xiling Li, Jakub Suliga, Thomas Roth, Moritz Reuss, Pankhuri Vanjani, Rudolf Lioutikov<br>
+            🏆 <strong style="color: blue;">Best Extended Abstract</strong> 🏆
           </td>
           <td><b><a href="https://openreview.net/pdf?id=LN88ScWy9s" target="_blank">Paper</a></b></td>
           <td><b><a href="https://youtu.be/I8IkeVkPMC0" target="_blank">Video</a></b></td>
@@ -705,6 +737,50 @@
       <p>Thank you to <a href="https://joaomcm.github.io/" target="_blank"><b>João Marcos Correia Marques</b></a> and <a href="https://www.linkedin.com/in/kamjordan" target="_blank"><b>Jordan Kam</b></a> for supporting this workshop through peer review.</p>
     </div>
 
+  <div class="section" id="gallery" style="text-align: center;">
+    <h2>Workshop Photos</h2>
+    <div class="photo-gallery">
+      <img data-src="imgs/workshop_pictures/20260717_140145.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140154.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140203.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140222.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140447.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140529.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140535.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_140620.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_141002.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_141124.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_141220.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_141227.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_141238.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_144032.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_144053.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_144057.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_144123.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_161741.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_161808.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_161810.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_163443.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_164441.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_164451.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_164505.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171624.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171625.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171626.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171919.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171932.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_171934.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_172149.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_172155.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_174619.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_174622.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_180427.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_180428.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_180511.jpg" alt="Workshop photo">
+      <img data-src="imgs/workshop_pictures/20260717_180512.jpg" alt="Workshop photo">
+    </div>
+  </div>
+
   <div class="foot">
     <b>Contact:</b> For questions, please contact the organizers (<a
       href="mailto:lab-to-production-workshop@googlegroups.com">lab-to-production-workshop@googlegroups.com</a>).
@@ -713,6 +789,48 @@
   </div>
 
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const photoGallery = document.querySelector('.photo-gallery');
+      if (!photoGallery) return;
+
+      // Shuffle the images so they appear in a random order (Fisher-Yates)
+      const images = Array.from(photoGallery.querySelectorAll('img'));
+      for (let i = images.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        photoGallery.appendChild(images[j]);
+        images.splice(j, 1);
+      }
+
+      const shuffled = photoGallery.querySelectorAll('img');
+      let currentIndex = 0;
+
+      function loadImage(index) {
+        const img = shuffled[index];
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
+      }
+
+      if (shuffled.length > 0) {
+        loadImage(0);
+        loadImage(1 % shuffled.length);
+        shuffled[0].classList.add('active');
+
+        function showNextImage() {
+          shuffled[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % shuffled.length;
+          loadImage(currentIndex);
+          shuffled[currentIndex].classList.add('active');
+          loadImage((currentIndex + 1) % shuffled.length);
+        }
+
+        setInterval(showNextImage, 3000);
+      }
+    });
+  </script>
 
 </body>
 
