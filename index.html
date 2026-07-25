@@ -826,30 +826,45 @@
       }
 
       const shuffled = photoGallery.querySelectorAll('img');
+      const DISPLAY_MS = 3000;
       let currentIndex = 0;
 
+      // Start loading an image and return a promise that resolves once it is
+      // fully decoded (or immediately if it is already loaded).
       function loadImage(index) {
         const img = shuffled[index];
-        if (img && img.dataset.src) {
+        if (!img) return Promise.resolve();
+        if (img.dataset.src) {
           img.src = img.dataset.src;
           delete img.dataset.src;
         }
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise(function (resolve) {
+          img.addEventListener('load', resolve, { once: true });
+          img.addEventListener('error', resolve, { once: true });
+        });
       }
 
       if (shuffled.length > 0) {
-        loadImage(0);
-        loadImage(1 % shuffled.length);
-        shuffled[0].classList.add('active');
+        // Show the first image only once it has actually loaded.
+        loadImage(0).then(function () {
+          shuffled[0].classList.add('active');
+          loadImage(1 % shuffled.length);
+          setTimeout(showNextImage, DISPLAY_MS);
+        });
 
         function showNextImage() {
-          shuffled[currentIndex].classList.remove('active');
-          currentIndex = (currentIndex + 1) % shuffled.length;
-          loadImage(currentIndex);
-          shuffled[currentIndex].classList.add('active');
-          loadImage((currentIndex + 1) % shuffled.length);
+          const nextIndex = (currentIndex + 1) % shuffled.length;
+          // Ensure the next image is loaded before swapping to it.
+          loadImage(nextIndex).then(function () {
+            shuffled[currentIndex].classList.remove('active');
+            shuffled[nextIndex].classList.add('active');
+            currentIndex = nextIndex;
+            // Preload the following image in the background.
+            loadImage((currentIndex + 1) % shuffled.length);
+            setTimeout(showNextImage, DISPLAY_MS);
+          });
         }
-
-        setInterval(showNextImage, 3000);
       }
     });
   </script>
